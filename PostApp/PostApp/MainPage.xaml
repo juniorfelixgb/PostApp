@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PostApp.MainPage"
+             Title="Lista de Publicaciones"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout Padding="10" Spacing="10">
+            <!-- Barra de búsqueda -->
+            <SearchBar Placeholder="Buscar por título"
+                       TextChanged="OnSearchTextChanged"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"
+                       BackgroundColor="#E8E8E8" />
+
+            <!-- Lista de publicaciones -->
+            <CollectionView ItemsSource="{Binding Posts}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnItemSelected"
+                            BackgroundColor="White"
+                            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#DDDDDD" CornerRadius="5" Padding="10" Margin="5">
+                            <StackLayout>
+                                <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                                <Label Text="{Binding Body}" FontSize="14" TextColor="DarkGray" LineBreakMode="TailTruncation" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
